@@ -1,0 +1,74 @@
+\documentclass{jarticle}
+\title{赤穂昭太郎「カーネル多変量解析」　メモ}
+\author{Kazeto Fukasawa}
+\date{平成26年5月19日}
+
+\begin{document}
+\maketitle
+\section{2章}
+\subsection*{2.2}
+(2.21)の導出\\
+\[
+\phi_{z}(x) = a \exp(-\beta'(z-x)^2) \ \ \ \ \ \ \ \ \ \cdots \ (2.19)
+\]
+\[
+k(x,x') = \int_{-\infty}^{\infty} \phi_{z}(x) \phi_{z}(x') dz \ \ \ \ \ \  \cdots \ (2.20)
+\]
+\\
+\[
+k(x,x') = a^2 \int_{-\infty}^{\infty} \exp(-\beta' (z-x)^2 - \beta' (z-x)^2) dz
+\]
+\[
+= a^2 \int_{-\infty}^{\infty} \exp(-\beta' (z^2-2zx+x^2) - \beta' (z^2-2zx'+x'^2) ) dz
+\]
+\\
+expの中に着目して、\\
+\[
+-2\beta'z^2 + 2\beta'z(x+x') -\beta'x^2 - \beta'x'^2
+\]
+\[
+= -2\beta'(z^2 - (x+x')z) - \beta'x^2 - \beta'x^2
+\]
+\[
+= -2\beta' \{(z - \frac{1}{2} (x+x'))^2 - \{- \frac{1}{2}(x+x') \}^2 \}  - \beta'x^2 - \beta'x^2
+\]
+\[
+= -2\beta' (z-\frac{1}{2} (x+x'))^2 + \frac{\beta'}{2}(x+x')^2   - \beta'x^2 - \beta'x^2
+\]
+ \[
+ = -2\beta' (z-\frac{1}{2} (x+x'))^2 + \frac{\beta'}{2}(x^2 + 2xx' + x'^2) - \beta'x^2 - \beta'x^2
+ \]
+ \[
+  = -2\beta' (z-\frac{1}{2} (x+x'))^2 + \frac{\beta'}{2}x^2 +\beta' 2xx' +\frac{\beta'}{2}x'^2 - \beta'x^2 - \beta'x^2
+ \]
+ \[
+   = -2\beta' (z-\frac{1}{2} (x+x'))^2  - \frac{\beta'}{2}x^2 - \frac{\beta'}{2}x'^2 + \beta' x' x
+ \]
+ \[
+    = -2\beta' (z-\frac{1}{2} (x+x'))^2 - \frac{\beta'}{2}(x^2 - 2x'x + x'^2)
+ \]
+ \[
+  = -2\beta' (z-\frac{1}{2} (x+x'))^2 - \frac{\beta'}{2}(x-x')^2
+  \]
+\\  
+元の式に戻すと、
+\[
+k(x,x') = a^2 \int_{-\infty}^{\infty} \exp(-2\beta' (z-\frac{1}{2} (x+x'))^2 - \frac{\beta'}{2}(x-x')^2) dz
+\]
+\[
+= a^2 \exp(- \frac{\beta'}{2}(x-x')^2)  \int_{-\infty}^{\infty} \exp(-2\beta' (z-\frac{1}{2} (x+x'))^2 ) dz
+\]
+\\
+ここで、$t=z-\frac{1}{2}(x+x')$とおくと、$z=t+\frac{1}{2}(x+x')$となり、微分すると、$\frac{dz}{dt} =1$となる。従って$dz=dt$。
+これで変数変換すると、
+\[
+ =  a^2 \exp(- \frac{\beta'}{2}(x-x')^2)  \int_{-\infty}^{\infty} \exp(-2\beta' t^2) dt
+\]
+ガウス積分する。
+\[
+= a^2 \exp(- \frac{\beta'}{2}(x-x')^2) \sqrt{\frac{\pi}{2\beta'}}
+\]
+となって(2.21)になる。
+\subsection*{終わりに}
+texで書きおこすのが予想以上に大変なのでこれにて終了。
+\end{document}
